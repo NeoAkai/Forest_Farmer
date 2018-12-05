@@ -8,8 +8,10 @@ public class Grass extends GraphicalObject  {
     //Atribute
     private int width;
     private int heigth;
+    private boolean plantable;
 
     //Referenzen
+    private CoveringObject coveringObject;
 
 
     public Grass(double x, double y){
@@ -22,6 +24,14 @@ public class Grass extends GraphicalObject  {
     public void draw(DrawTool drawTool) {
         super.draw(drawTool);
         drawTool.drawImage(getMyImage(),x,y);
+    }
+
+    public CoveringObject getCoveringObject() {
+        return coveringObject;
+    }
+
+    public void setCoveringObject(CoveringObject coveringObject) {
+        this.coveringObject = coveringObject;
     }
 }
 

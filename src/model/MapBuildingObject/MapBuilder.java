@@ -60,14 +60,11 @@ public class MapBuilder {
                         }
 
                         if (currentLetter.equals("T")||currentLetter.equals("B")) {
-                            tree[i][a] = new Tree(tempX, tempY,currentLetter,pc);
-                            ui.drawObject(tree[i][a]);
+                            grass[i][a] = new Grass(tempX, tempY);
+                            ui.drawObject(grass[i][a]);
+                            grass[i][a].setCoveringObject(new Tree(tempX, tempY, currentLetter, pc));
+                            ui.drawObject(grass[i][a].getCoveringObject());
                         }
-
-
-
-
-
                         tempX = tempX + 50;
                     }
                     tempY = tempY + 50;

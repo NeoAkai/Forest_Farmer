@@ -4,9 +4,11 @@ import control.ProgramController;
 import model.framework.GraphicalObject;
 import view.framework.DrawTool;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 
-public class Tree extends GraphicalObject  {
+public class Tree extends CoveringObject  {
 
     //Atribute
     private int width=50;
@@ -32,6 +34,7 @@ public class Tree extends GraphicalObject  {
         this.pc = pc;
         this.art = art;
 
+        Hitbox = new Rectangle2D.Double(x,y-50,width,heigth);
 
         if(art.equals("T")) {
             createAndSetNewImage("assets/images/tree.png");
@@ -55,19 +58,20 @@ public class Tree extends GraphicalObject  {
         axeable = b;
     }
 
-    public void mouseReleased(MouseEvent e){
+    /*public void mouseReleased(MouseEvent e){
         if(klicked) {
             if (realAxeable && living) {
                 if (e.getX() > x && e.getX() < x + width && e.getY() > y - 50 && e.getY() < y + heigth - 50) {
                     if(!parasiten) pc.addWood((int) (Math.random() * 12 + 8));
-                    living = false;
-                    createAndSetNewImage("assets/images/grass.png"); //wichtig, da sonst Grafikfehler auftritt!
-                    imgload = true;
+                    //living = false;
+                    pc.removeTree(this);
+                    //createAndSetNewImage("assets/images/grass.png"); //wichtig, da sonst Grafikfehler auftritt!
+                    //imgload = true;
                 }
             }
         }
         klicked = !klicked;
-    }
+    }*/
 
     public void real(boolean b){
         realAxeable = b;
@@ -105,6 +109,11 @@ public class Tree extends GraphicalObject  {
     public void parasiten(boolean b){
         parasiten = b;
     }
+
+    public boolean isParasiten() {
+        return parasiten;
+    }
+
     public void relive(String newArt){
         art = newArt;
         living = true;

@@ -44,6 +44,7 @@ public class ProgramController {
     }
 
     public void startGame(){
+        new SQLCreator();
         userInterface = new UserInterface(0,0);
         uiController.drawObject(userInterface);
         grass = new Grass[13][28];
@@ -51,7 +52,7 @@ public class ProgramController {
         mapBuilder = new MapBuilder(grass,tree,uiController,this);
         cat = new Cat(200,500);
         uiController.drawObject(cat);
-        axeButton = new AxeButton(1220,540,tree,this);
+        axeButton = new AxeButton(1220,540,grass,this);
         uiController.drawObject(axeButton);
         invButton = new inventoryButton(1060,540);
         uiController.drawObject(invButton);
@@ -79,6 +80,19 @@ public class ProgramController {
      */
     public void updateProgram(double dt){
         // Hier passiert noch nichts, das Programm läuft friedlich vor sich hin
+    }
+
+    public void removeTree(Tree t){
+        boolean treeRemoved = false;
+        for(int i = 0; i < grass.length && !treeRemoved; i++){
+            for(int j = 0; j < grass[i].length && !treeRemoved; j++){
+                if(grass[i][j].getCoveringObject() == t){
+                    treeRemoved = true;
+                    grass[i][j].setCoveringObject(null);
+                    uiController.removeObject(t);
+                }
+            }
+        }
     }
 
 
