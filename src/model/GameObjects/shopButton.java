@@ -8,8 +8,8 @@ import java.awt.event.MouseEvent;
 public class shopButton extends GraphicalObject {
 
     //Atribute
-    private int width = 150;
-    private int heigth = 150;
+    private int width = 40;
+    private int heigth = 40;
 
     private boolean klicked = false;
     private boolean visible = true;

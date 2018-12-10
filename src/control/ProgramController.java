@@ -54,11 +54,11 @@ public class ProgramController {
         sqlCreator.handleSQL();
         cat = new Cat(200,500);
         uiController.drawObject(cat);
-        axeButton = new AxeButton(1220,540,grass,this);
+        axeButton = new AxeButton(1000,5,grass,this);
         uiController.drawObject(axeButton);
-        invButton = new inventoryButton(1060,540);
+        invButton = new inventoryButton(950,5);
         uiController.drawObject(invButton);
-        shpButton = new shopButton(900,540);
+        shpButton = new shopButton(900,5);
         uiController.drawObject(shpButton);
     }
 
