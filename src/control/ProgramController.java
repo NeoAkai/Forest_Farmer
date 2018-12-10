@@ -23,6 +23,7 @@ public class ProgramController {
     private AxeButton axeButton;
     private inventoryButton invButton;
     private shopButton shpButton;
+    private SQLHandler sqlCreator;
     /**
      * Konstruktor
      * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
@@ -44,12 +45,13 @@ public class ProgramController {
     }
 
     public void startGame(){
-        new SQLCreator();
         userInterface = new UserInterface(0,0);
         uiController.drawObject(userInterface);
         grass = new Grass[13][28];
         tree = new Tree[13][28];
         mapBuilder = new MapBuilder(grass,tree,uiController,this);
+        sqlCreator = new SQLHandler(mapBuilder);
+        sqlCreator.handleSQL();
         cat = new Cat(200,500);
         uiController.drawObject(cat);
         axeButton = new AxeButton(1220,540,grass,this);
@@ -90,11 +92,13 @@ public class ProgramController {
                     treeRemoved = true;
                     grass[i][j].setCoveringObject(null);
                     uiController.removeObject(t);
+                    sqlCreator.removeTreeFromDatabase(i,j);
                 }
             }
         }
     }
 
-
-
+    public SQLHandler getSqlCreator() {
+        return sqlCreator;
+    }
 }

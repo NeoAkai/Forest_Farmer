@@ -6,6 +6,8 @@ import control.ProgramController;
 import control.framework.UIController;
 
 import java.io.*;
+import java.sql.ResultSet;
+import java.sql.Statement;
 
 public class MapBuilder {
 
@@ -23,10 +25,10 @@ public class MapBuilder {
         this.tree = tree;
         this.pc = pc;
         this.ui = ui;
-        load();
     }
 
-    public void load() {
+    public void loadFromTxt() {
+        //System.out.println(1);
 
 
         BufferedReader reader;
@@ -57,6 +59,7 @@ public class MapBuilder {
                         if (currentLetter.equals("G")) {
                             grass[i][a] = new Grass(tempX, tempY);
                             ui.drawObject(grass[i][a]);
+                            pc.getSqlCreator().addGrass(i,a);
                         }
 
                         if (currentLetter.equals("T")||currentLetter.equals("B")) {
@@ -64,6 +67,8 @@ public class MapBuilder {
                             ui.drawObject(grass[i][a]);
                             grass[i][a].setCoveringObject(new Tree(tempX, tempY, currentLetter, pc));
                             ui.drawObject(grass[i][a].getCoveringObject());
+                            pc.getSqlCreator().addGrass(i,a);
+                            pc.getSqlCreator().addTree(i,a,currentLetter);
                         }
                         tempX = tempX + 50;
                     }
@@ -73,7 +78,32 @@ public class MapBuilder {
             }
 
         } catch (IOException e) {
-            //System.err.println("Nope");
+            e.printStackTrace();
+        }
+    }
+
+    public void loadGrassFromDatabase(ResultSet results){
+        try {
+            while (results.next()) {
+                int x = results.getInt(1);
+                int y = results.getInt(2);
+                grass[x][y] = new Grass(50*y,50*x+50);
+                ui.drawObject(grass[x][y]);
+            }
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+    }
+
+    public void loadTreesFromDatabase(ResultSet results){
+        try{
+            while (results.next()){
+                int x = results.getInt(3);
+                int y = results.getInt(4);
+                grass[x][y].setCoveringObject(new Tree(50*y, 50*x+50, results.getString(2), pc));
+                ui.drawObject(grass[x][y].getCoveringObject());
+            }
+        }catch (Exception e){
             e.printStackTrace();
         }
     }
