@@ -13,7 +13,7 @@ public class Rabbit extends Animal  {
     public Rabbit(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/hase_links.png";
-        pathToImageRight = "assets/images/hase.png";
+        pathToImageRight = "assets/images/Animals/hase.png";
     }
 
     @Override

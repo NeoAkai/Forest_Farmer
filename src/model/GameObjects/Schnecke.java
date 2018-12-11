@@ -13,7 +13,7 @@ public class Schnecke extends Animal  {
     public Schnecke(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/schnecke_links.png";
-        pathToImageRight = "assets/images/schnecke.png";
+        pathToImageRight = "assets/images/Animals/schnecke.png";
     }
 
     @Override

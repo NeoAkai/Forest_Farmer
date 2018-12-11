@@ -13,7 +13,7 @@ public class Goat extends Animal  {
     public Goat(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/ziege_links.png";
-        pathToImageRight = "assets/images/ziege.png";
+        pathToImageRight = "assets/images/Animals/ziege.png";
     }
 
     @Override

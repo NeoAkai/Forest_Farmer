@@ -13,7 +13,7 @@ public class Fox extends Animal  {
     public Fox(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/fuchs_links.png";
-        pathToImageRight = "assets/images/fuchs.png";
+        pathToImageRight = "assets/images/Animals/fuchs.png";
     }
 
     @Override

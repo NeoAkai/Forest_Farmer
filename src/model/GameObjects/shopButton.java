@@ -6,45 +6,27 @@ import view.framework.DrawTool;
 
 import java.awt.event.MouseEvent;
 
-public class shopButton extends GraphicalObject {
+public class ShopButton extends MenuButton {
 
     //Atribute
-    private int width = 40;
-    private int heigth = 40;
-    private ProgramController pc;
-    private boolean klicked = false;
-    private boolean visible = true;
 
     //Referenzen
 
 
-    public shopButton(double x, double y, ProgramController pc) {
+    public ShopButton(double x, double y, ProgramController pc) {
+        super(x,y,40,40,pc);
         this.x = x;
         this.y = y;
-        this.pc = pc;
 
-        createAndSetNewImage("assets/images/shopButton.png");
+        createAndSetNewImage("assets/images/UiImages/ShopButton.png");
 
     }
 
     @Override
-    public void draw(DrawTool drawTool) {
-        super.draw(drawTool);
-        if(visible)drawTool.drawImage(getMyImage(), x, y);
+    protected void doButtonFunction(MouseEvent e) {
+
     }
 
-    public void mouseReleased(MouseEvent e) {
-        if (visible) {
-            if (e.getX() > x && e.getX() < x + width && e.getY() > y && e.getY() < y + heigth) {
-                if (!klicked) {
-                    pc.removeButtons(false);
-                    pc.setShop(true);
-                }
-
-            }
-        }
-        klicked = !klicked;
-    }
     public void setVisibility(boolean b){
         visible = b;
     }

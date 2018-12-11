@@ -13,7 +13,7 @@ public class Hirsch extends Animal  {
     public Hirsch(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/hirsch_links.png";
-        pathToImageRight = "assets/images/hirsch.png";
+        pathToImageRight = "assets/images/Animals/hirsch.png";
     }
 
     @Override

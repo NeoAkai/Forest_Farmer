@@ -13,7 +13,7 @@ public class Eichhörnchen extends Animal  {
     public Eichhörnchen(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/eichhörnchen_links.png";
-        pathToImageRight = "assets/images/eichhörnchen.png";
+        pathToImageRight = "assets/images/Animals/eichhörnchen.png";
     }
 
     @Override

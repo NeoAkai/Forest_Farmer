@@ -1,47 +1,32 @@
 package model.GameObjects;
 
+import control.ProgramController;
 import model.framework.GraphicalObject;
 import view.framework.DrawTool;
 
 import java.awt.event.MouseEvent;
 
-public class inventoryButton extends GraphicalObject {
+public class InventoryButton extends MenuButton {
 
     //Atribute
-    private int width = 40;
-    private int heigth = 40;
-
-    private boolean klicked = false;
-    private boolean visible = true;
 
     //Referenzen
 
 
-    public inventoryButton(double x, double y) {
+    public InventoryButton(double x, double y, ProgramController pc) {
+        super(x,y,40,40,pc);
         this.x = x;
         this.y = y;
 
-        createAndSetNewImage("assets/images/invButton.png");
+        createAndSetNewImage("assets/images/UiImages/invButton.png");
 
     }
 
     @Override
-    public void draw(DrawTool drawTool) {
-        super.draw(drawTool);
-        if(visible)drawTool.drawImage(getMyImage(), x, y);
+    protected void doButtonFunction(MouseEvent e) {
+
     }
 
-    public void mouseReleased(MouseEvent e) {
-        if (visible) {
-            if (e.getX() > x && e.getX() < x + width && e.getY() > y && e.getY() < y + heigth) {
-                if (!klicked) {
-
-                    }
-
-            }
-        }
-        klicked = !klicked;
-        }
     public void setVisibility(boolean b){
         visible = b;
     }

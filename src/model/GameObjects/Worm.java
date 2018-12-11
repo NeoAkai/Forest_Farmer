@@ -13,7 +13,7 @@ public class Worm extends Animal  {
     public Worm(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/cooler_wurm_links.png";
-        pathToImageRight = "assets/images/cooler_wurm.png";
+        pathToImageRight = "assets/images/Animals/cooler_wurm.png";
     }
 
     @Override

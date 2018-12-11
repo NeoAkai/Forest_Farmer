@@ -27,7 +27,7 @@ public class AxeButton extends GraphicalObject {
         this.y = y;
         this.pc = pc;
         this.grasses = grasses;
-        createAndSetNewImage("assets/images/axeButton.png");
+        createAndSetNewImage("assets/images/UiImages/axeButton.png");
     }
 
     @Override

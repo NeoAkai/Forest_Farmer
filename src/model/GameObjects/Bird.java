@@ -13,7 +13,7 @@ public class Bird extends Animal  {
     public Bird(double x, double y){
         super(x,y);
         pathToImageLeft = "assets/images/vogel_links.png";
-        pathToImageRight = "assets/images/vogel.png";
+        pathToImageRight = "assets/images/Animals/vogel.png";
     }
 
     @Override
