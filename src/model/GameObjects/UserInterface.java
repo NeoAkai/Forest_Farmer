@@ -19,7 +19,7 @@ public class UserInterface extends GraphicalObject  {
     public UserInterface(double x, double y){
         this.x = x;
         this.y = y;
-        createAndSetNewImage("assets/images/interface.png");
+        createAndSetNewImage("assets/images/UiImages/interface.png");
 
     }
     @Override

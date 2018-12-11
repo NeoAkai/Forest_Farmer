@@ -12,8 +12,8 @@ public class Cat extends Animal  {
 
     public Cat(double x, double y){
         super(x,y);
-        pathToImageLeft = "assets/images/cat_black_left.png";
-        pathToImageRight = "assets/images/cat_black_right.png";
+        pathToImageLeft = "assets/images/Animals/cat_black_left.png";
+        pathToImageRight = "assets/images/Animals/cat_black_right.png";
     }
 
     @Override

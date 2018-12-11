@@ -19,10 +19,12 @@ public class ProgramController {
     private Grass[][] grass;
     private Tree[][] tree;
     private Cat cat;
+    private MenuButton[] buttons;
+    private XButton xButton;
     private UserInterface userInterface;
     private AxeButton axeButton;
-    private inventoryButton invButton;
-    private shopButton shpButton;
+    private InventoryButton invButton;
+    private ShopButton shpButton;
     private SQLHandler sqlCreator;
     /**
      * Konstruktor
@@ -54,12 +56,20 @@ public class ProgramController {
         sqlCreator.handleSQL();
         cat = new Cat(200,500);
         uiController.drawObject(cat);
-        axeButton = new AxeButton(1000,5,grass,this);
-        uiController.drawObject(axeButton);
-        invButton = new inventoryButton(950,5);
-        uiController.drawObject(invButton);
-        shpButton = new shopButton(900,5);
-        uiController.drawObject(shpButton);
+
+        buttons = new MenuButton[5];
+        buttons[0] = new AxeButton(1000,5,grass,this);
+        buttons[1] = new ShopButton(900,5,this);
+        buttons[2] = new InventoryButton(950,5,this);
+
+        xButton = new XButton(1050,5,this);
+        uiController.drawObject(xButton);
+
+        for(MenuButton b : buttons){
+            if(b != null){
+                uiController.drawObject(b);
+            }
+        }
     }
 
 
@@ -69,10 +79,31 @@ public class ProgramController {
     public void addCash(int amount){
         userInterface.addCash(amount);
     }
+
     public void removeButtons(boolean b){
         invButton.setVisibility(b);
         shpButton.setVisibility(b);
         axeButton.setVisibility(b);
+    }
+
+    public void activateButton(MenuButton b){
+        for(MenuButton m : buttons){
+            if(m != null) {
+                m.setVisible(false);
+            }
+        }
+        b.setActive(true);
+        xButton.setVisible(true);
+    }
+
+    public void deactivateButton(){
+        for(MenuButton m : buttons){
+            if(m != null){
+                m.setActive(false);
+                m.setVisible(true);
+            }
+        }
+        xButton.setVisible(false);
     }
 
 
