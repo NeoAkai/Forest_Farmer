@@ -1,62 +1,47 @@
 package model.GameObjects;
 
-import mapObjects.Grass;
 import control.ProgramController;
-import mapObjects.Tree;
 import model.framework.GraphicalObject;
 import view.framework.DrawTool;
 
+import java.awt.*;
 import java.awt.event.MouseEvent;
+import java.awt.geom.Rectangle2D;
 
 public class XButton extends GraphicalObject {
 
-    //Atribute
-    private int width = 40;
-    private int heigth = 40;
-    private boolean klicked = false;
-    private boolean visible = false;
     private ProgramController pc;
+    private boolean klicked, visible;
 
+    private Rectangle2D.Double hitbox;
 
-    //Referenzen
-
-
-    public XButton(double x, double y, ProgramController pc) {
+    public XButton(double x, double y, ProgramController pc){
         this.x = x;
         this.y = y;
         this.pc = pc;
-        createAndSetNewImage("assets/images/ix.png");
+        createAndSetNewImage("assets/images/UiImages/ix.png");
+        visible = false;
+        hitbox = new Rectangle2D.Double(x,y,40,40);
     }
 
     @Override
     public void draw(DrawTool drawTool) {
-        super.draw(drawTool);
-        if(visible)drawTool.drawImage(getMyImage(), x, y);
+        if(visible) drawTool.drawImage(getMyImage(),x, y);
     }
 
+    @Override
     public void mouseReleased(MouseEvent e) {
-        if(klicked) {
-            if (visible) {
-                if (e.getX() > x && e.getX() < x + width && e.getY() > y && e.getY() < y + heigth) {
-                    /*for (int i = 0; i < grasses.length; i++) {
-                        for (int f = 0; f < grasses[0].length; f++) {
-                            if (grasses[i][f] != null) {
-                                grasses[i][f].setAxeable(true);
-                            }
-                        }
-                    }*/
-
-
-                    pc.removeButtons(true);
-                    pc.setShop(false);
-
+        if(klicked){
+            if(visible){
+                if(hitbox.contains(e.getPoint())){
+                    pc.deactivateButton();
                 }
             }
         }
-        klicked = !klicked;
+        klicked =! klicked;
     }
-    public void setVisibility(boolean b){
+
+    public void setVisible(boolean b){
         visible = b;
     }
 }
-

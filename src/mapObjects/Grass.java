@@ -17,7 +17,7 @@ public class Grass extends GraphicalObject  {
     public Grass(double x, double y){
         this.x = x;
         this.y = y;
-        createAndSetNewImage("assets/images/grass.png");
+        createAndSetNewImage("assets/images/MapObjectImages/grass.png");
 
     }
     @Override

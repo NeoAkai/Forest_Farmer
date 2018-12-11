@@ -33,7 +33,7 @@ public class AxeButton extends GraphicalObject {
     @Override
     public void draw(DrawTool drawTool) {
         super.draw(drawTool);
-        if(visible)drawTool.drawImage(getMyImage(), x, y);
+        drawTool.drawImage(getMyImage(), x, y);
     }
 
     public void mouseReleased(MouseEvent e) {
@@ -47,8 +47,9 @@ public class AxeButton extends GraphicalObject {
                             }
                         }
                     }*/
+                    x = x + 50;
 
-
+                    createAndSetNewImage("assets/images/ix.png");
                     pc.removeButtons(false);
                     axing = true;
                 }
@@ -62,7 +63,9 @@ public class AxeButton extends GraphicalObject {
                             }
                         }
                     }*/
+                    x = x - 50;
 
+                    createAndSetNewImage("assets/images/axeButton.png");
                     pc.removeButtons(true);
                     axing = false;
                 }else{
@@ -85,7 +88,6 @@ public class AxeButton extends GraphicalObject {
     }
     public void setVisibility(boolean b){
         visible = b;
-        axing = !b;
     }
 }
 

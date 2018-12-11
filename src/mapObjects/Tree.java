@@ -37,9 +37,9 @@ public class Tree extends CoveringObject  {
         Hitbox = new Rectangle2D.Double(x,y-50,width,heigth);
 
         if(art.equals("T")) {
-            createAndSetNewImage("assets/images/tree.png");
+            createAndSetNewImage("assets/images/MapObjectImages/tree.png");
         }else if(art.equals("B")){
-            createAndSetNewImage("assets/images/birke.png");
+            createAndSetNewImage("assets/images/MapObjectImages/birke.png");
         }
 
     }
@@ -92,11 +92,7 @@ public class Tree extends CoveringObject  {
             parasitenCounter = parasitenCounter -dt;
         }
         if(parasitenCounter <=0 && parasiten){
-            createAndSetNewImage("assets/images/grass.png");
-            imgload = true;
-            parasiten = false;
-            living = false;
-
+            pc.removeTree(this);
         }
 
         if(axeCounter <= 0){
