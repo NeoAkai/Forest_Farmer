@@ -19,13 +19,22 @@ public class ProgramController {
     private Grass[][] grass;
     private Tree[][] tree;
     private Cat cat;
-    private MenuButton[] buttons;
-    private XButton xButton;
+    private Bird bird;
+    private Eichhörnchen eichhörnchen;
+    private Fox fox;
+    private Goat goat;
+    private Hirsch hirsch;
+    private Rabbit rabbit;
+    private Schnecke schnecke;
+    private WildPig wildPig;
+    private Worm worm;
     private UserInterface userInterface;
     private AxeButton axeButton;
     private InventoryButton invButton;
-    private ShopButton shpButton;
+    private ShopButton shopButton;
     private SQLHandler sqlCreator;
+    private XButton ix;
+    private shop shop;
     /**
      * Konstruktor
      * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
@@ -56,20 +65,35 @@ public class ProgramController {
         sqlCreator.handleSQL();
         cat = new Cat(200,500);
         uiController.drawObject(cat);
+        bird = new Bird(300,400);
+        uiController.drawObject(bird);
+        eichhörnchen = new Eichhörnchen(700,500);
+        uiController.drawObject(eichhörnchen);
+        fox = new Fox(473,507);
+        uiController.drawObject(fox);
+        goat = new Goat(1000,395);
+        uiController.drawObject(goat);
+        hirsch = new Hirsch(933,698);
+        uiController.drawObject(hirsch);
+        rabbit = new Rabbit(655,555);
+        uiController.drawObject(rabbit);
+        schnecke = new Schnecke(823,222);
+        uiController.drawObject(schnecke);
+        wildPig = new WildPig(539,111);
+        uiController.drawObject(wildPig);
+        worm = new Worm(666,283);
+        uiController.drawObject(worm);
+        axeButton = new AxeButton(1000,5,grass,this);
+        uiController.drawObject(axeButton);
+        invButton = new InventoryButton(950,5,this);
+        uiController.drawObject(invButton);
+        shopButton = new ShopButton(900,5,this);
+        uiController.drawObject(shopButton);
+        ix = new XButton(1050,5,this);
+        uiController.drawObject(ix);
+        shop = new shop(50,50);
+        uiController.drawObject(shop);
 
-        buttons = new MenuButton[5];
-        buttons[0] = new AxeButton(1000,5,grass,this);
-        buttons[1] = new ShopButton(900,5,this);
-        buttons[2] = new InventoryButton(950,5,this);
-
-        xButton = new XButton(1050,5,this);
-        uiController.drawObject(xButton);
-
-        for(MenuButton b : buttons){
-            if(b != null){
-                uiController.drawObject(b);
-            }
-        }
     }
 
 
@@ -79,31 +103,14 @@ public class ProgramController {
     public void addCash(int amount){
         userInterface.addCash(amount);
     }
-
     public void removeButtons(boolean b){
         invButton.setVisibility(b);
-        shpButton.setVisibility(b);
+        shopButton.setVisibility(b);
         axeButton.setVisibility(b);
+        ix.setVisible(!b);
     }
-
-    public void activateButton(MenuButton b){
-        for(MenuButton m : buttons){
-            if(m != null) {
-                m.setVisible(false);
-            }
-        }
-        b.setActive(true);
-        xButton.setVisible(true);
-    }
-
-    public void deactivateButton(){
-        for(MenuButton m : buttons){
-            if(m != null){
-                m.setActive(false);
-                m.setVisible(true);
-            }
-        }
-        xButton.setVisible(false);
+    public void setShop(boolean b){
+        shop.setVisible(b);
     }
 
 

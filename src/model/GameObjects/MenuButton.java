@@ -44,7 +44,7 @@ public abstract class MenuButton extends GraphicalObject {
     }
 
     protected void activateButton(){
-        pc.activateButton(this);
+      //  pc.activateButton(this);
     }
 
     protected abstract void doButtonFunction(MouseEvent e);
