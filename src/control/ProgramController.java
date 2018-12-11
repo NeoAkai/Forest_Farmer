@@ -24,7 +24,6 @@ public class ProgramController {
     private inventoryButton invButton;
     private shopButton shpButton;
     private SQLHandler sqlCreator;
-    private XButton xButton;
     /**
      * Konstruktor
      * Dieser legt das Objekt der Klasse ProgramController an, das den Programmfluss steuert.
@@ -55,32 +54,25 @@ public class ProgramController {
         sqlCreator.handleSQL();
         cat = new Cat(200,500);
         uiController.drawObject(cat);
-        axeButton = new AxeButton(1220,540,grass,this);
+        axeButton = new AxeButton(1000,5,grass,this);
         uiController.drawObject(axeButton);
-        invButton = new inventoryButton(1060,540);
+        invButton = new inventoryButton(950,5);
         uiController.drawObject(invButton);
-        shpButton = new shopButton(900,540, this);
+        shpButton = new shopButton(900,5);
         uiController.drawObject(shpButton);
-        xButton = new XButton(0,0,this);
-        uiController.drawObject(xButton);
     }
 
 
     public void addWood(int amount){
         userInterface.addWood(amount);
     }
-
     public void addCash(int amount){
         userInterface.addCash(amount);
     }
-
-    public void removeButtons(boolean b, double x, double y){
+    public void removeButtons(boolean b){
         invButton.setVisibility(b);
         shpButton.setVisibility(b);
         axeButton.setVisibility(b);
-        xButton.setVisible(!b);
-        xButton.setX(x);
-        xButton.setY(y);
     }
 
 

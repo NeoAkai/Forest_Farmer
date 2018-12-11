@@ -11,13 +11,13 @@ import java.awt.event.MouseEvent;
 public class AxeButton extends GraphicalObject {
 
     //Atribute
-    private int width = 150;
-    private int heigth = 150;
+    private int width = 40;
+    private int heigth = 40;
     private Grass[][] grasses;
     private boolean klicked = false;
     private boolean visible = true;
     private ProgramController pc;
-    private boolean axing, active;
+    private boolean axing;
 
     //Referenzen
 
@@ -33,20 +33,42 @@ public class AxeButton extends GraphicalObject {
     @Override
     public void draw(DrawTool drawTool) {
         super.draw(drawTool);
-        if(visible)drawTool.drawImage(getMyImage(), x, y);
+        drawTool.drawImage(getMyImage(), x, y);
     }
 
     public void mouseReleased(MouseEvent e) {
         if(klicked) {
             if (visible) {
                 if (e.getX() > x && e.getX() < x + width && e.getY() > y && e.getY() < y + heigth) {
-                    x = x - 150;
-                    y = y + 50;
-                    pc.removeButtons(false,1070,590);
-                    active = true;
+                    /*for (int i = 0; i < grasses.length; i++) {
+                        for (int f = 0; f < grasses[0].length; f++) {
+                            if (grasses[i][f] != null) {
+                                grasses[i][f].setAxeable(true);
+                            }
+                        }
+                    }*/
+                    x = x + 50;
+
+                    createAndSetNewImage("assets/images/ix.png");
+                    pc.removeButtons(false);
+                    axing = true;
                 }
             } else if (!visible) {
-                if(active){
+
+                if (e.getX() > x && e.getX() < x + 40 && e.getY() > y && e.getY() < y + 40) {
+                    /*for (int i = 0; i < grasses.length; i++) {
+                        for (int f = 0; f < grasses[0].length; f++) {
+                            if (grasses[i][f] != null) {
+                                grasses[i][f].real(false);
+                            }
+                        }
+                    }*/
+                    x = x - 50;
+
+                    createAndSetNewImage("assets/images/axeButton.png");
+                    pc.removeButtons(true);
+                    axing = false;
+                }else{
                     for (int i = 0; i < grasses.length; i++) {
                         for (int f = 0; f < grasses[0].length; f++) {
                             if(grasses[i][f] != null) {
@@ -64,7 +86,6 @@ public class AxeButton extends GraphicalObject {
         }
         klicked = !klicked;
     }
-
     public void setVisibility(boolean b){
         visible = b;
     }
